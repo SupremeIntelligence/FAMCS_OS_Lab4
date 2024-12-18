@@ -11,8 +11,14 @@ endif()
 
 project ("OS_Lab4")
 
+add_subdirectory(Receiver)
+add_subdirectory(Sender)
 # Добавьте источник в исполняемый файл этого проекта.
-add_executable (OS_Lab4 "OS_Lab4.cpp" "OS_Lab4.h")
+add_executable (OS_Lab4 "main.cpp" "globals.cpp")
+
+target_include_directories(OS_Lab4 PUBLIC include)
+target_include_directories(Receiver PUBLIC include)
+target_include_directories(Sender PUBLIC include)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET OS_Lab4 PROPERTY CXX_STANDARD 20)
