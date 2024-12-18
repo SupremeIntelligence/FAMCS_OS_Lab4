@@ -1,6 +1,9 @@
 #include"globals.h"
 
 const int MAX_MSG_SIZE = 20;
+const char* MUTEX_NAME = "FileAccessMutex";
+const char* READY_EVENT_NAME = "SenderReadyEvent";
+std::string projectDir = getProjectDir();
 
 std::string getProjectDir()
 {
@@ -36,4 +39,3 @@ std::string getReceiverExePath(std::string buildDir)
     return buildDir;
 }
 
-std::string projectDir = getProjectDir();

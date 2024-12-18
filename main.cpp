@@ -39,35 +39,6 @@ bool startReceiverProcess(const string& cmdArgs)
     return true;
 }
 
-bool startSenderProcess(const string& cmdArgs)
-{
-    STARTUPINFO senderSi;
-    PROCESS_INFORMATION senderPi;
-    ZeroMemory(&senderSi, sizeof(STARTUPINFO));
-    senderSi.cb = sizeof(STARTUPINFO);
-
-    LPSTR lpszSenderCommandLine = const_cast<LPSTR>(cmdArgs.c_str());
-
-    if (!CreateProcessA(
-        nullptr,
-        lpszSenderCommandLine,
-        nullptr,
-        nullptr,
-        false, 0,
-        nullptr,
-        nullptr,
-        &senderSi,
-        &senderPi))
-    {
-        cerr << "Sender process isn't created." << endl;
-        return false;
-    }
-
-    CloseHandle(senderPi.hProcess);
-    CloseHandle(senderPi.hThread);
-    return true;
-}
-
 int main()
 {
     string receiverArgs = getReceiverExePath(projectDir);
@@ -75,7 +46,7 @@ int main()
 
     if (startReceiverProcess(receiverArgs))
     {
-        cout << "Receiver process finished";
+        cout << "Receiver process finished"<<endl;
     }
 
 }
