@@ -11,8 +11,11 @@ endif()
 
 project ("OS_Lab4")
 
+enable_testing()
+
 add_subdirectory(Receiver)
 add_subdirectory(Sender)
+add_subdirectory(tests)
 # Добавьте источник в исполняемый файл этого проекта.
 add_executable (OS_Lab4 "main.cpp" "globals.cpp")
 

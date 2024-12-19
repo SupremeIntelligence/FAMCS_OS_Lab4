@@ -61,7 +61,10 @@ int main(int argc, char* argv[])
     
     HANDLE mutex = CreateMutexA(nullptr, FALSE, MUTEX_NAME);
     HANDLE readyEvent = CreateEventA(nullptr, TRUE, FALSE, READY_EVENT_NAME);
-    if (!mutex || !readyEvent) {
+    HANDLE exitEvent = CreateEventA(nullptr, TRUE, FALSE, "ExitEvent");
+    HANDLE emptyEvent = CreateEventA(nullptr, TRUE, FALSE, "EmptyEvent");
+    
+    if (!mutex || !readyEvent || !exitEvent ||!emptyEvent) {
         cout << "Failed to create synchronization objects.\n";
         return -1;
     }
@@ -99,6 +102,7 @@ int main(int argc, char* argv[])
                 std::cout << "Queue is empty. Waiting...\n";
                 file.close();
                 ReleaseMutex(mutex);
+                WaitForSingleObject(emptyEvent, INFINITE);
                 continue;
             }
 
@@ -123,12 +127,15 @@ int main(int argc, char* argv[])
 
         }
         else if (command == "exit") {
+            SetEvent(exitEvent);
             break;
         }
     }
 
     CloseHandle(mutex);
     CloseHandle(readyEvent);
+    CloseHandle(emptyEvent);
+    CloseHandle(exitEvent);
 
 	return 0;
 }

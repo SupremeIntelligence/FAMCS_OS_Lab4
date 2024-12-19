@@ -8,8 +8,10 @@ int main(int argc, char* argv[])
 
 	HANDLE mutex = OpenMutexA(MUTEX_ALL_ACCESS, FALSE, MUTEX_NAME);
 	HANDLE readyEvent = OpenEventA(EVENT_ALL_ACCESS, FALSE, READY_EVENT_NAME);
+    HANDLE exitEvent = OpenEventA(EVENT_ALL_ACCESS, FALSE, "ExitEvent");
+    HANDLE emptyEvent = OpenEventA(EVENT_ALL_ACCESS, FALSE, "EmptyEvent");
 
-	if (!mutex || !readyEvent) {
+	if (!mutex || !readyEvent || !exitEvent || !emptyEvent) {
 		cerr << "Failed to open synchronization objects.\n";
 		return -1;
 	}
@@ -18,7 +20,7 @@ int main(int argc, char* argv[])
 
     SetEvent(readyEvent);
 
-    while (true) {
+    while (WaitForSingleObject(exitEvent, 0) != WAIT_OBJECT_0) {
         std::string command;
         std::cout << "Enter command (send/exit): ";
         std::cin >> command;
@@ -46,6 +48,7 @@ int main(int argc, char* argv[])
 
             if (!msg.isFilled) {
                 std::strcpy(msg.text, message.c_str());
+                SetEvent(emptyEvent);
                 msg.isFilled = true;
 
                 file.seekp(sizeof(QueueControl) + queue.writeIndex * sizeof(Message));
@@ -70,6 +73,8 @@ int main(int argc, char* argv[])
     file.close();
     CloseHandle(mutex);
     CloseHandle(readyEvent);
+    CloseHandle(emptyEvent);
+    CloseHandle(exitEvent);
 
 	return 0;
 }
