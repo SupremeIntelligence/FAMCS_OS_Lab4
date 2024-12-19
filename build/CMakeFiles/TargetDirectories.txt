@@ -1,0 +1,12 @@
+D:/IT/WIN32API/OS_Lab4/build/CMakeFiles/OS_Lab4.dir
+D:/IT/WIN32API/OS_Lab4/build/CMakeFiles/RUN_TESTS.dir
+D:/IT/WIN32API/OS_Lab4/build/CMakeFiles/ALL_BUILD.dir
+D:/IT/WIN32API/OS_Lab4/build/CMakeFiles/ZERO_CHECK.dir
+D:/IT/WIN32API/OS_Lab4/build/Receiver/CMakeFiles/Receiver.dir
+D:/IT/WIN32API/OS_Lab4/build/Receiver/CMakeFiles/RUN_TESTS.dir
+D:/IT/WIN32API/OS_Lab4/build/Receiver/CMakeFiles/ALL_BUILD.dir
+D:/IT/WIN32API/OS_Lab4/build/Sender/CMakeFiles/Sender.dir
+D:/IT/WIN32API/OS_Lab4/build/Sender/CMakeFiles/RUN_TESTS.dir
+D:/IT/WIN32API/OS_Lab4/build/Sender/CMakeFiles/ALL_BUILD.dir
+D:/IT/WIN32API/OS_Lab4/build/tests/CMakeFiles/SenderTest.dir
+D:/IT/WIN32API/OS_Lab4/build/tests/CMakeFiles/RUN_TESTS.dir

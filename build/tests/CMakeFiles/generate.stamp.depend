@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+D:/IT/WIN32API/OS_Lab4/tests/CMakeLists.txt
+D:/IT/WIN32API/OS_Lab4/vcpkg_installed/x64-windows/share/Catch2/Catch2Config.cmake
+D:/IT/WIN32API/OS_Lab4/vcpkg_installed/x64-windows/share/Catch2/Catch2ConfigVersion.cmake
+D:/IT/WIN32API/OS_Lab4/vcpkg_installed/x64-windows/share/Catch2/Catch2Targets-debug.cmake
+D:/IT/WIN32API/OS_Lab4/vcpkg_installed/x64-windows/share/Catch2/Catch2Targets-release.cmake
+D:/IT/WIN32API/OS_Lab4/vcpkg_installed/x64-windows/share/Catch2/Catch2Targets.cmake
